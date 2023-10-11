@@ -7,11 +7,12 @@ public class Cliente {
     private LocalDate dataNasc;
     private String endereco;
     List<Conta> contas;
-}
+
 
 public Cliente(String nome, String cpf, LocalDate dataNasc, String endereco){
     this.nome = nome;
     this.cpf = cpf;
     this.dataNasc = dataNasc;
     this.endereco = endereco;
+}
 }

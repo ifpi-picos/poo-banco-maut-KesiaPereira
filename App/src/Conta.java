@@ -1,13 +1,13 @@
 public class Conta {
-    private final String numAgency;
-    private final String numAccount;
+    private final String numAgencia;
+    private final String numConta;
     private Double saldo = 0.00;
     private Cliente cliente;
-}
 
-public Conta(String numAgency, String numAccount, Cliente cliente){
-    this.numAgency = numAgency;
-    this.numAccount = numAccount;
+
+public Conta(String numAgencia, String numConta, Cliente cliente){
+    this.numAgencia = numAgencia;
+    this.numConta = numConta;
     this.cliente = cliente;
 }
 
@@ -15,7 +15,7 @@ public double getSaldo(){
     return saldo;
 }
 
-public void depoist(double valor){
+public void deposito(double valor){
     saldo += valor;
 }
 
@@ -30,9 +30,9 @@ public void sacar(double valor){
 public void transfer(Conta contaFin, double valor){
     if (valor <= saldo){
         saldo -= valor;
-        contaFin.deposit(valor);
+        contaFin.deposito(valor);
     } else {
         System.out.println("Saldo insuficiente.");
     }
 }
-
+}
