@@ -2,8 +2,16 @@ import java.util.List;
 import java.time.LocalDate;
 
 public class Cliente {
-    public String name;
-    public LocalDate dataNasc;
+    private String nome;
     private String cpf;
-    private String address;
+    private LocalDate dataNasc;
+    private String endereco;
+    List<Conta> contas;
+}
+
+public Cliente(String nome, String cpf, LocalDate dataNasc, String endereco){
+    this.nome = nome;
+    this.cpf = cpf;
+    this.dataNasc = dataNasc;
+    this.endereco = endereco;
 }
