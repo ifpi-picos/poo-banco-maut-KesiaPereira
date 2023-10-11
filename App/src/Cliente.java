@@ -3,7 +3,7 @@ import java.time.LocalDate;
 
 public class Cliente {
     private String nome;
-    private String cpf;
+    private final String cpf;
     private LocalDate dataNasc;
     private String endereco;
     List<Conta> contas;
