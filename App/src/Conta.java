@@ -2,14 +2,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Conta {
-    private final String numAgencia;
-    private final String numConta;
-    private Double saldo;
+
+    private final int numAgencia;
+    private final int numConta;
+    private double saldo;
     private Cliente cliente;
     private List<Transacao> transacoes;
 
 
-    public Conta(String numAgencia, String numConta, Cliente cliente){
+    public Conta(int numAgencia, int numConta, Cliente cliente){
         this.numAgencia = numAgencia;
         this.numConta = numConta;
         this.cliente = cliente;

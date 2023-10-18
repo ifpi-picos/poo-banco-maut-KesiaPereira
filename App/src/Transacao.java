@@ -2,7 +2,7 @@ import java.time.LocalDate;
 
 public class Transacao {
     private String descricao;
-    private Double valor;
+    private double valor;
     private LocalDate data;
 
     public Transacao(String descricao, double valor, LocalDate data){
