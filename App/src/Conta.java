@@ -18,8 +18,24 @@ public class Conta {
         this.transacoes = new ArrayList<>();
     }
 
+    public int getNumAgencia() {
+        return numAgencia;
+    }
+
+    public int getNumConta() {
+        return numConta;
+    }
+    
     public double getSaldo(){
         return saldo;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public void deposito(double valor){
