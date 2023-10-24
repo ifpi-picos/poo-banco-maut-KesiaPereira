@@ -1,8 +1,9 @@
-public class ContaC {
+public class ContaC extends Conta{
 
     private double chequeEspecial;
 
-    public ContaC(double chequeEspecial) {
+    public ContaC(int numAgencia, int numConta, Cliente cliente, double chequeEspecial) {
+        super(numAgencia, numConta, cliente);
         this.chequeEspecial = chequeEspecial;
     }
 
