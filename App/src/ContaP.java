@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class ContaP extends Conta{
 
     private double rendimento;
@@ -17,15 +19,30 @@ public class ContaP extends Conta{
 
     public void transferTax2(Conta contaFin, double valor){
         double taxa = valor * 0.10;
-        if (super.getSaldo() >= valor + taxa){
+        if (getSaldo() >= valor + taxa){
             super.transfer(contaFin, valor + taxa);
         } else {
             System.out.println("Saldo insuficiente.");
         }
     }
 
-    public void sacarTax(double valor){
+    public void sacarTax1(double valor){
         double taxa = valor * 0.05;
+        if (getSaldo() >= valor + taxa){
+            setSaldo(getSaldo() - (valor + taxa));
+            LocalDate dataHoje = LocalDate.now();
+            Transacao sacar = new Transacao("Saque", -valor, dataHoje);
+            addTransacao(sacar);
+            Transacao sacarTax = new Transacao("Taxa de Saque", -taxa, dataHoje);
+            addTransacao(sacarTax);
+        } else {
+            System.out.println("Saldo insuficiente");
+        }
+    }
+
+    @Override
+    public void sacar(double valor){
+        sacarTax1(valor);
     }
 
 }
