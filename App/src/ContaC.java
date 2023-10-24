@@ -17,7 +17,7 @@ public class ContaC extends Conta{
         this.chequeEspecial = chequeEspecial;
     }
 
-    public void transfer(Conta contaFin, double valor){
+    public void transferTax1(Conta contaFin, double valor){
         if (valor > (super.getSaldo() + chequeEspecial)){
             System.out.println("Saldo insuficiente.");
             return;
