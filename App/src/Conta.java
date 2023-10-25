@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Conta {
 
-    private final String numAgencia;
-    private final String numConta;
+    private final String numeroAgencia;
+    private final String numeroConta;
     protected double saldo;
     private Cliente cliente;
     private List<Transacao> transacoes;
@@ -13,21 +13,21 @@ public class Conta {
     private LocalDate dataHoje = LocalDate.now();
 
 
-    public Conta(String numAgencia, String numConta, Cliente cliente, Notificacao notificacao){
-        this.numAgencia = numAgencia;
-        this.numConta = numConta;
+    public Conta(String numeroAgencia, String numeroConta, Cliente cliente, Notificacao notificacao){
+        this.numeroAgencia = numeroAgencia;
+        this.numeroConta = numeroConta;
         this.cliente = cliente;
         this.saldo = 0.00;
         this.transacoes = new ArrayList<>();
         this.notificacao = notificacao;
     }
 
-    public String getNumAgencia() {
-        return numAgencia;
+    public String getNumeroAgencia() {
+        return numeroAgencia;
     }
 
-    public String getNumConta() {
-        return numConta;
+    public String getNumeroConta() {
+        return numeroConta;
     }
     
     public double getSaldo(){
@@ -57,21 +57,27 @@ public class Conta {
     public void sacar(double valor){
         if (valor <= saldo){
             saldo -= valor;
+
             Transacao saque = new Transacao("Saque", valor, dataHoje);
             addTransacao(saque);
+
             System.out.println("Saque concluido.");
+
         } else {
             System.out.println("Saldo insuficiente.");
         }
     }
 
-    public void transfer(Conta contaDestino, double valor){
+    public void transferencia(Conta contaDestino, double valor){
         if (valor <= saldo){
             saldo -= valor;
             contaDestino.deposito(valor);
+
             Transacao deposito = new Transacao("Deposito", valor, dataHoje);
             addTransacao(deposito);
+
             System.out.println("Deposito concluido.");
+
         } else {
             System.out.println("Saldo insuficiente.");
         }

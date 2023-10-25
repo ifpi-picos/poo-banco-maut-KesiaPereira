@@ -1,11 +1,11 @@
 import java.time.LocalDate;
 
 public class Main {
-    private static final String numAgencia1 = "123456";
-    private static final String numConta1 = "123456678";
+    private static final String numeroAgencia1 = "123456";
+    private static final String numeroConta1 = "123456678";
 
-    private static final String numAgencia2 = "654321";
-    private static final String numConta2 = "87654321";
+    private static final String numeroAgencia2 = "654321";
+    private static final String numeroConta2 = "87654321";
 
     public static void main(String[] args){
 
@@ -22,13 +22,13 @@ public class Main {
 
 
         //Criação de novas contas + contas poupança + contas corrente.
-        Conta conta1 = new Conta(numAgencia1, numConta1, cliente1, notificacao1);
-            ContaP contaPoupanca1 = new ContaP(numAgencia1, numConta1, cliente1, 1000, notificacao2);
-            ContaC contaCorrente1 = new ContaC(numAgencia1, numConta1, cliente1, 600, notificacao2);
+        Conta conta1 = new Conta(numeroAgencia1, numeroConta1, cliente1, notificacao1);
+            ContaPoupanca contaPoupanca1 = new ContaPoupanca(numeroAgencia1, numeroConta1, cliente1, 1000, notificacao2);
+            ContaCorrente contaCorrente1 = new ContaCorrente(numeroAgencia1, numeroConta1, cliente1, 600, notificacao2);
 
-        Conta conta2 = new Conta(numAgencia2, numConta2, cliente2, notificacao1);
-            ContaP contaPoupanca2 = new ContaP(numAgencia2, numConta2, cliente2, 1000, notificacao2);
-            ContaC contaCorrente2 = new ContaC(numAgencia2, numConta2, cliente2, 600, notificacao2);
+        Conta conta2 = new Conta(numeroAgencia2, numeroConta2, cliente2, notificacao1);
+            ContaPoupanca contaPoupanca2 = new ContaPoupanca(numeroAgencia2, numeroConta2, cliente2, 1000, notificacao2);
+            ContaCorrente contaCorrente2 = new ContaCorrente(numeroAgencia2, numeroConta2, cliente2, 600, notificacao2);
 
 
         //Verificação de dados.
@@ -61,13 +61,13 @@ public class Main {
         contaPoupanca2.sacar(100);
         contaCorrente1.deposito(500);
         contaCorrente2.deposito(250);
-        contaCorrente1.transfer(contaCorrente2, 200);
-        contaCorrente2.transfer(contaCorrente1, 200);
+        contaCorrente1.transferencia(contaCorrente2, 200);
+        contaCorrente2.transferencia(contaCorrente1, 200);
         System.out.println("-------------------------------------------");
 
         //Teste de erro.
         System.out.println("-------------------------------------------");
-        contaPoupanca2.transfer(contaPoupanca1, 30000);
+        contaPoupanca2.transferencia(contaPoupanca1, 30000);
         System.out.println("-------------------------------------------");
 
         //Verificando saldos.
@@ -83,16 +83,16 @@ public class Main {
 
         //Notificações pelo email.
         System.out.println("-------------------------------------------");
-        notificacao1.enviaNotif("Deposito_Poupanca", 1000.00);
-        notificacao1.enviaNotif("Saque_Poupanca", 200.00);
-        notificacao1.enviaNotif("Deposito_Corrente", 500);
-        notificacao1.enviaNotif("Transferencia_Corrente", 200.00);
+        notificacao1.enviarNotificacao("Deposito_Poupanca", 1000.00);
+        notificacao1.enviarNotificacao("Saque_Poupanca", 200.00);
+        notificacao1.enviarNotificacao("Deposito_Corrente", 500);
+        notificacao1.enviarNotificacao("Transferenciaencia_Corrente", 200.00);
         System.out.println("-------------------------------------------");
         //Notificações pelo sms.
-        notificacao2.enviaNotif("Deposito_Poupanca", 500.00);
-        notificacao2.enviaNotif("Saque_Poupanca", 100.00);
-        notificacao2.enviaNotif("Deposito_Corrente", 250.00);
-        notificacao2.enviaNotif("Transferencia_Corrente", 200.00);
+        notificacao2.enviarNotificacao("Deposito_Poupanca", 500.00);
+        notificacao2.enviarNotificacao("Saque_Poupanca", 100.00);
+        notificacao2.enviarNotificacao("Deposito_Corrente", 250.00);
+        notificacao2.enviarNotificacao("Transferenciaencia_Corrente", 200.00);
         System.out.println("-------------------------------------------");
         System.out.println("-------------------------------------------");
     }

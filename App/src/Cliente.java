@@ -5,15 +5,15 @@ public class Cliente {
 
     private String nome;
     private final String cpf;
-    private LocalDate dataNasc;
+    private LocalDate dataNascimento;
     private List<Conta> contas;
     private List<Endereco> enderecos;
 
 
-    public Cliente(String nome, String cpf, LocalDate dataNasc){
+    public Cliente(String nome, String cpf, LocalDate dataNascimento){
         this.nome = nome;
         this.cpf = cpf;
-        this.dataNasc = dataNasc;
+        this.dataNascimento = dataNascimento;
     }
 
     public String getNome(){
@@ -28,12 +28,12 @@ public class Cliente {
         return cpf;
     }
 
-    public LocalDate GetDataNasc(){
-        return dataNasc;
+    public LocalDate GetDataNascimento(){
+        return dataNascimento;
     }
 
-    public void setDataNasc(LocalDate dataNasc){
-        this.dataNasc = dataNasc;
+    public void setDataNasc(LocalDate dataNascimento){
+        this.dataNascimento = dataNascimento;
     }
 
     public List<Conta> getContas(){
@@ -56,7 +56,7 @@ public class Cliente {
     public String toString(){
         return "\nNome: " + this.getNome() +
                "\nCPF: " + this.getCpf() +
-               "\nNascimento: " + this.GetDataNasc();
+               "\nNascimento: " + this.GetDataNascimento();
     }
 
 }
