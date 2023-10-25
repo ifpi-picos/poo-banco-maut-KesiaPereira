@@ -40,6 +40,16 @@ public class ContaP extends Conta{
         }
     }
 
+    public void depositarRend(double valor){
+        double rendimentoDeposit = valor * (rendimento/100.0);
+        setSaldo(getSaldo() + valor + rendimentoDeposit);
+        LocalDate dataHoje = LocalDate.now();
+        Transacao deposito = new Transacao("Deposito", valor, dataHoje);
+        addTransacao(deposito);
+        Transacao rendimento = new Transacao("Rendimento", rendimentoDeposit, dataHoje);
+        addTransacao(rendimento);
+    }
+
     @Override
     public void sacar(double valor){
         sacarTax1(valor);
