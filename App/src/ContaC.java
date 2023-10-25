@@ -3,7 +3,7 @@ public class ContaC extends Conta{
     private double chequeEspecial;
     private int transferenciasF;
 
-    public ContaC(int numAgencia, int numConta, Cliente cliente, double chequeEspecial, Notificacao notificacao) {
+    public ContaC(String numAgencia, String numConta, Cliente cliente, double chequeEspecial, Notificacao notificacao) {
         super(numAgencia, numConta, cliente, notificacao);
         this.chequeEspecial = chequeEspecial;
         this.transferenciasF = 0;

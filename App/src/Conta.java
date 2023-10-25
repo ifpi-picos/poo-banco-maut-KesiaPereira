@@ -3,15 +3,15 @@ import java.util.List;
 
 public class Conta {
 
-    private final int numAgencia;
-    private final int numConta;
+    private final String numAgencia;
+    private final String numConta;
     private double saldo;
     private Cliente cliente;
     private List<Transacao> transacoes;
     Notificacao notificacao;
 
 
-    public Conta(int numAgencia, int numConta, Cliente cliente, Notificacao notificacao){
+    public Conta(String numAgencia, String numConta, Cliente cliente, Notificacao notificacao){
         this.numAgencia = numAgencia;
         this.numConta = numConta;
         this.cliente = cliente;
@@ -24,11 +24,11 @@ public class Conta {
         this.saldo = saldo;
     }
 
-    public int getNumAgencia() {
+    public String getNumAgencia() {
         return numAgencia;
     }
 
-    public int getNumConta() {
+    public String getNumConta() {
         return numConta;
     }
     

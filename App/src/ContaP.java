@@ -4,7 +4,7 @@ public class ContaP extends Conta{
 
     private double rendimento;
 
-    public ContaP(int numAgencia, int numConta, Cliente cliente, double rendimento, Notificacao notificacao) {
+    public ContaP(String numAgencia, String numConta, Cliente cliente, double rendimento, Notificacao notificacao) {
         super(numAgencia, numConta, cliente, notificacao);
         this.rendimento = rendimento;
     }
