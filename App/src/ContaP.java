@@ -17,10 +17,10 @@ public class ContaP extends Conta{
         this.rendimento = rendimento;
     }
 
-    public void transferTax2(Conta contaFin, double valor){
+    public void transferTax2(Conta contaDestino, double valor){
         double taxa = valor * 0.10;
         if (getSaldo() >= valor + taxa){
-            super.transfer(contaFin, valor + taxa);
+            super.transfer(contaDestino, valor + taxa);
         } else {
             System.out.println("Saldo insuficiente.");
         }
@@ -51,8 +51,20 @@ public class ContaP extends Conta{
     }
 
     @Override
+    public void transfer(Conta contaDestino, double valor){
+        transferTax2(contaDestino, valor);
+    }
+
+    @Override
     public void sacar(double valor){
         sacarTax1(valor);
+    }
+
+    @Override
+    public String toString(){
+        return "\nAgencia: " + this.getNumAgencia() +
+               "\nConta: " + this.getNumConta() +
+               "\nRendimento: " + this.getRendimento();
     }
 
 }

@@ -63,4 +63,12 @@ public class Endereco {
         this.cliente = cliente;
     }
 
+    @Override
+    public String toString(){
+        return "\nLogradouro: " + this.getLogradouro() +
+               "\nNumero: " + this.getNumero() + 
+               "\nBairro: " + this.getBairro() +
+               "\nCidade: " + this.getCidade() +
+               "\nUf: " + this.getUf();
+    }
 }

@@ -35,4 +35,16 @@ public class ContaC extends Conta{
         transferenciasF++;
     }
 
+    @Override
+    public void transfer(Conta contaDestino, double valor){
+        transferTax1(contaDestino, valor);
+    }
+
+    @Override
+    public String toString(){
+        return "\nAgencia: " + this.getNumAgencia() +
+               "\nConta: " + this.getNumConta() +
+               "\nRendimento: " + this.getChequeEspecial();
+    }
+
 }
