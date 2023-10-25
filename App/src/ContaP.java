@@ -29,7 +29,7 @@ public class ContaP extends Conta{
     public void sacarTax1(double valor){
         double taxa = valor * 0.05;
         if (getSaldo() >= valor + taxa){
-            setSaldo(getSaldo() - (valor + taxa));
+            saldo -= (valor + taxa);
             LocalDate dataHoje = LocalDate.now();
             Transacao sacar = new Transacao("Saque", -valor, dataHoje);
             addTransacao(sacar);
@@ -42,7 +42,7 @@ public class ContaP extends Conta{
 
     public void depositarRend(double valor){
         double rendimentoDeposit = valor * (rendimento/100.0);
-        setSaldo(getSaldo() + valor + rendimentoDeposit);
+        saldo += valor + rendimentoDeposit;
         LocalDate dataHoje = LocalDate.now();
         Transacao deposito = new Transacao("Deposito", valor, dataHoje);
         addTransacao(deposito);
