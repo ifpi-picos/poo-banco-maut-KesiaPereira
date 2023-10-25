@@ -27,4 +27,11 @@ public class Transacao {
         return data;
     }
 
+    @Override
+    public String toString(){
+        return "\nOperacao: " + descricao +
+               "\nValor: " + valor +
+               "\nData: " + data;
+    }
+
 }

@@ -85,7 +85,4 @@ public class Conta {
         transacoes.add(transacao);
     }
 
-    public void setSaldo(double d) {
-    }
-
 }
