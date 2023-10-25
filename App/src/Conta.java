@@ -44,7 +44,11 @@ public class Conta {
         saldo += valor;
     }
 
-    public void setNoticacao(Notificacao notificacao){
+    public Notificacao getNotificacao(){
+        return notificacao;
+    }
+
+    public void setNotificacao(Notificacao notificacao){
         this.notificacao = notificacao;
     }
 
