@@ -8,14 +8,20 @@ public class Conta {
     private double saldo;
     private Cliente cliente;
     private List<Transacao> transacoes;
+    Notificacao notificacao;
 
 
-    public Conta(int numAgencia, int numConta, Cliente cliente){
+    public Conta(int numAgencia, int numConta, Cliente cliente, Notificacao notificacao){
         this.numAgencia = numAgencia;
         this.numConta = numConta;
         this.cliente = cliente;
-        this.saldo = 0.00;
+        this.setSaldo(0.00);
         this.transacoes = new ArrayList<>();
+        this.notificacao = notificacao;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 
     public int getNumAgencia() {
@@ -39,20 +45,24 @@ public class Conta {
     }
 
     public void deposito(double valor){
-        saldo += valor;
+        setSaldo(getSaldo() + valor);
+    }
+
+    public void setNoticacao(Notificacao notificacao){
+        this.notificacao = notificacao;
     }
 
     public void sacar(double valor){
-        if (valor <= saldo){
-            saldo -= valor;
+        if (valor <= getSaldo()){
+            setSaldo(getSaldo() - valor);
         } else {
             System.out.println("Saldo insuficiente.");
         }
     }
 
     public void transfer(Conta contaFin, double valor){
-        if (valor <= saldo){
-            saldo -= valor;
+        if (valor <= getSaldo()){
+            setSaldo(getSaldo() - valor);
             contaFin.deposito(valor);
         } else {
             System.out.println("Saldo insuficiente.");

@@ -4,8 +4,8 @@ public class ContaP extends Conta{
 
     private double rendimento;
 
-    public ContaP(int numAgencia, int numConta, Cliente cliente, double rendimento) {
-        super(numAgencia, numConta, cliente);
+    public ContaP(int numAgencia, int numConta, Cliente cliente, double rendimento, Notificacao notificacao) {
+        super(numAgencia, numConta, cliente, notificacao);
         this.rendimento = rendimento;
     }
 
@@ -54,5 +54,5 @@ public class ContaP extends Conta{
     public void sacar(double valor){
         sacarTax1(valor);
     }
-    
+
 }
