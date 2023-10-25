@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ public class Conta {
     private Cliente cliente;
     private List<Transacao> transacoes;
     private Notificacao notificacao;
+    private LocalDate dataHoje = LocalDate.now();
 
 
     public Conta(String numAgencia, String numConta, Cliente cliente, Notificacao notificacao){
@@ -55,6 +57,9 @@ public class Conta {
     public void sacar(double valor){
         if (valor <= saldo){
             saldo -= valor;
+            Transacao saque = new Transacao("Saque", valor, dataHoje);
+            addTransacao(saque);
+            System.out.println("Saque concluido.");
         } else {
             System.out.println("Saldo insuficiente.");
         }
@@ -64,6 +69,9 @@ public class Conta {
         if (valor <= saldo){
             saldo -= valor;
             contaDestino.deposito(valor);
+            Transacao deposito = new Transacao("Deposito", valor, dataHoje);
+            addTransacao(deposito);
+            System.out.println("Deposito concluido.");
         } else {
             System.out.println("Saldo insuficiente.");
         }

@@ -3,6 +3,7 @@ import java.time.LocalDate;
 public class ContaP extends Conta{
 
     private double rendimento;
+    private LocalDate dataHoje = LocalDate.now();
 
     public ContaP(String numAgencia, String numConta, Cliente cliente, double rendimento, Notificacao notificacao) {
         super(numAgencia, numConta, cliente, notificacao);
@@ -21,6 +22,9 @@ public class ContaP extends Conta{
         double taxa = valor * 0.10;
         if (getSaldo() >= valor + taxa){
             super.transfer(contaDestino, valor + taxa);
+            Transacao transferencia = new Transacao("Transferencia na poupanca", valor, dataHoje);
+            addTransacao(transferencia);
+            System.out.println("Tranferencia concluida.");
         } else {
             System.out.println("Saldo insuficiente.");
         }
@@ -30,11 +34,13 @@ public class ContaP extends Conta{
         double taxa = valor * 0.05;
         if (getSaldo() >= valor + taxa){
             saldo -= (valor + taxa);
-            LocalDate dataHoje = LocalDate.now();
-            Transacao sacar = new Transacao("Saque", -valor, dataHoje);
+            Transacao sacar = new Transacao("Saque na poupanca", -valor, dataHoje);
             addTransacao(sacar);
-            Transacao sacarTax = new Transacao("Taxa de Saque", -taxa, dataHoje);
+            System.out.println("Saque concluido.");
+            Transacao sacarTax = new Transacao("Taxa de saque", -taxa, dataHoje);
             addTransacao(sacarTax);
+            System.out.println("Taxa de 5% aplicada.");
+
         } else {
             System.out.println("Saldo insuficiente");
         }
@@ -46,8 +52,10 @@ public class ContaP extends Conta{
         LocalDate dataHoje = LocalDate.now();
         Transacao deposito = new Transacao("Deposito", valor, dataHoje);
         addTransacao(deposito);
+        System.out.println("Deposito concluido.");
         Transacao rendimento = new Transacao("Rendimento", rendimentoDeposit, dataHoje);
         addTransacao(rendimento);
+        System.out.println("Rendimento aplicado.");
     }
 
     @Override
