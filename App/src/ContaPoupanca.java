@@ -1,11 +1,12 @@
 import java.time.LocalDate;
 
-public class ContaPoupanca extends Conta{
+public class ContaPoupanca extends Conta {
 
     private double rendimento;
     private LocalDate dataHoje = LocalDate.now();
 
-    public ContaPoupanca(String numeroAgencia, String numeroConta, Cliente cliente, double rendimento, Notificacao notificacao) {
+    public ContaPoupanca(String numeroAgencia, String numeroConta, Cliente cliente,
+            double rendimento, Notificacao notificacao) {
         super(numeroAgencia, numeroConta, cliente, notificacao);
         this.rendimento = rendimento;
     }
@@ -18,12 +19,13 @@ public class ContaPoupanca extends Conta{
         this.rendimento = rendimento;
     }
 
-    private void taxaTransferenciaencia2(Conta contaDestino, double valor){
+    private void taxaTransferenciaencia2(Conta contaDestino, double valor) {
         double taxa = valor * 0.10;
-        if (getSaldo() >= valor + taxa){
+        if (getSaldo() >= valor + taxa) {
             super.transferencia(contaDestino, valor + taxa);
 
-            Transacao transferenciaencia = new Transacao("Transferenciaencia na poupanca", valor, dataHoje);
+            Transacao transferenciaencia =
+                    new Transacao("Transferenciaencia na poupanca", valor, dataHoje);
             addTransacao(transferenciaencia);
 
             System.out.println("Tranferencia concluida.");
@@ -33,9 +35,9 @@ public class ContaPoupanca extends Conta{
         }
     }
 
-    private void taxaSacar1(double valor){
+    private void taxaSacar1(double valor) {
         double taxa = valor * 0.05;
-        if (getSaldo() >= valor + taxa){
+        if (getSaldo() >= valor + taxa) {
             saldo -= (valor + taxa);
 
             Transacao sacar = new Transacao("Saque na poupanca", -valor, dataHoje);
@@ -53,8 +55,9 @@ public class ContaPoupanca extends Conta{
         }
     }
 
-    public void depositarRendimento(double valor){
-        double depositoRendimento = valor * (rendimento/100.0);
+    // método deveria ser privado
+    public void depositarRendimento(double valor) {
+        double depositoRendimento = valor * (rendimento / 100.0);
         saldo += valor + depositoRendimento;
 
         LocalDate dataHoje = LocalDate.now();
@@ -63,29 +66,28 @@ public class ContaPoupanca extends Conta{
         addTransacao(deposito);
 
         System.out.println("Deposito concluido.");
-        
+
         Transacao rendimento = new Transacao("Rendimento", depositoRendimento, dataHoje);
         addTransacao(rendimento);
 
         System.out.println("Rendimento aplicado.");
-        
+
     }
 
     @Override
-    public void transferencia(Conta contaDestino, double valor){
+    public void transferencia(Conta contaDestino, double valor) {
         taxaTransferenciaencia2(contaDestino, valor);
     }
 
     @Override
-    public void sacar(double valor){
+    public void sacar(double valor) {
         taxaSacar1(valor);
     }
 
     @Override
-    public String toString(){
-        return "\nAgencia: " + this.getNumeroAgencia() +
-               "\nConta: " + this.getNumeroConta() +
-               "\nRendimento: " + this.getRendimento();
+    public String toString() {
+        return "\nAgencia: " + this.getNumeroAgencia() + "\nConta: " + this.getNumeroConta()
+                + "\nRendimento: " + this.getRendimento();
     }
 
 }
